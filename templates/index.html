@@ -1,0 +1,120 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+    <div class="row equal-panels">
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    House price prediction
+                </div>
+
+                <div class="panel-body">
+                    {% load staticfiles %}
+                    <img src="{% static "images/huisAfbeelding.jpg" %}" alt="My image" style="width:100%" />
+                    <br />
+                    <br />
+                    Enter an address to predict the house price:
+                    <br /><br />
+
+                    <form method="post" action="/huis/">
+
+
+                            {% csrf_token %}
+
+                                                 {%  for field in homeform %}
+                                                                                   <div class="form-group">
+                                                    {{ field.label }}
+                                                                                       <div class="float-right">     {{ field }} </div>
+                                                                                   </div>
+                        {% endfor %}
+
+
+
+                          <input type="submit" class="btn btn-primary btn-right btn-lg" style="width:100%;" placeholder="Go" value="Go">
+
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    Twitter sentiment tool
+                </div>
+
+                <div class="panel-body">
+                    {% load staticfiles %}
+                    <img src="{% static "images/twitterAfbeelding.jpg" %}" alt="My image" style="width:100%" />
+                    <br />
+                    <br /> <p></p><br /><br /><p></p>
+                    Enter a hashtag to check its sentiment on Twitter:
+                    <br />
+                    <br />
+
+
+                    <form method="post" action="/twitter/">
+                            {% csrf_token %}
+                        {% for ding in twitter %}
+                       <div class="form-group">
+                        {{ ding.label }}
+                           <div class="float-right">
+                        {{  ding }}
+                           </div></div>
+                        {% endfor %}
+
+
+                          <input type="submit" class="btn btn-primary btn-right btn-lg" style="width:100%;" placeholder="Go" value="Go">
+                 </form>
+                      </div>
+
+
+                </div>
+
+            </div>
+
+
+
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    Image recognition
+                </div>
+
+                <div class="panel-body">
+                    {% load staticfiles %}
+                    <img src="{% static "images/imageRec.jpg" %}" alt="My image" style="width:100%" />
+                     <p></p><br /><br />
+                     <br />
+                    Upload an image to check our ecognition system:
+                    <br /><br />
+                     <form method="post" action="/image/">
+                            {% csrf_token %}
+                        {% for ding in upload %}
+                       <div class="form-group">
+                        {{ ding.label }}
+                           <div class="float-right">
+                        {{  ding }}
+                           </div></div>
+                        {% endfor %}
+
+
+                          <input type="submit" class="btn btn-primary btn-right btn-lg" style="width:100%;" placeholder="Go" value="Go">
+                 </form>
+                 </div>
+
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

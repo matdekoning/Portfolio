@@ -1,0 +1,91 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    Twitter sentiment tool
+                </div>
+
+                <div class="panel-body">
+                    <h1> The sentiment of the tweets about {{ tag }} is:</h1>
+                <br />
+
+<canvas id="myChart" width="30" height="10" ></canvas>
+
+
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Positive", "Neutral", "Negative"],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{ pos }}, {{ neut }}, {{ neg }}],
+            backgroundColor: [
+                'rgba(152, 251, 47, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                ],
+            borderColor: [
+                'rgba(152,251,47,1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 99, 132, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+   options: {
+    legend: {
+      display: true,
+      position: 'right',
+      labels: {
+        fontColor: "#000080",
+      }
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+</script>
+
+                    <br />
+                    <br />
+
+                Last 10 Tweets about {{ tag }}:
+                 <table class="table">
+                    <tbody>
+
+                    {% for message in messages %}
+                        <tr class="info"><th>
+                        {{ message.text }}
+                        </th></tr>
+                    {% endfor %}
+
+                    </tbody>
+                 </table>
+                </div>
+              </div>
+           </div>
+    <div class="float-right">
+        <a href="/home"><button type="button" class="btn btn-info btn-lg"> <h3>Back</h3> </button></a>
+    </div>
+
+
+
+
+
+
+
+
+{%  endblock %}

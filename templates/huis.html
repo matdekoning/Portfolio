@@ -1,0 +1,85 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    House price prediction
+                </div>
+
+                <div class="panel-body">
+
+                    <h1>{{ adres }}</h1>
+
+
+                <br />
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                   <div id="map" style="width:100%;height:400px;"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: {{ lat }}, lng: {{ lng }} };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Address'
+        });
+      }
+    </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzYHDqf1yrLUwLLiBZfIjV_M8Yz9zjQ0Y&callback=initMap" async defer></script>
+
+</div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                    <h1>Estimated value: <i> € {{ prediction }} </i></h1>
+                        <br />
+
+                        <table class="table table-striped">
+                             <tr>
+                                <th> House area </th>
+                                <th> {{ huisOp }} </th>
+                                <th> {{ huisRate }} </th>
+                            </tr>
+
+                            <tr>
+                                <th> Lot area </th>
+                                <th> {{ perceelOp }} m² </th>
+                                <th> {{ perceelRate }} </th>
+                            </tr>
+
+                            <tr>
+                                <th> Location in Holland </th>
+                                <th> {{ locationDes }} </th>
+                                <th> {{ locationStar }} </th>
+                            </tr>
+                        </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <div class="float-right">
+        <a href="/home"><button type="button" class="btn btn-info btn-lg"> <h3>Back</h3> </button></a>
+    </div>
+
+
+
+
+
+
+{% endblock %}
