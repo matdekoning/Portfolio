@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    Face recognition
+                </div>
+
+                <div class="panel-body">
+                    {% load staticfiles %}
+                    <center><img src="{% static img_url %}" alt="My image" style="width:50%" /></center>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <div class="float-right">
+        <a href="/home"><button type="button" class="btn btn-info btn-lg"> <h3>Back</h3> </button></a>
+    </div>
+
+
+
+
+
+
+{% endblock %}

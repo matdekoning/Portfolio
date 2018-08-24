@@ -44,22 +44,22 @@ def index(request):
         distance = re.findall(regex, distance)[0]
 
         if float(distance) < 10:
-            location = 3
+            location = 25
             locationStar= '++'
             locationDes = 'Amsterdam area'
         elif float(distance) >10 and float(distance) < 40:
-            location = 2
+            location = 20
             locationStar= '+'
             locationDes = 'Near Amsterdam'
         elif float(distance) >40 and float(distance) < 100:
-            location = 1.5
+            location = 15
             locationStar= '-'
             locationDes = 'Dense area'
         else:
-            location = 1
+            location = 8
             locationStar= '--'
             locationDes = 'Hinterland'
-        postcode = 1234
+
 
 
         if float(perceelOp) < 70:
@@ -80,9 +80,9 @@ def index(request):
         else:
             huisRate= '++'
 
-        postcode = 1234
 
-        newPrice = (380000 - 21 * (int(postcode))) - ((120 - int(huisOp)) * 900) - ((220 - int(perceelOp)) * 380)
+
+        newPrice = round((300000 - ((120 - int(huisOp)) * 900) - ((220 - int(perceelOp)) * 380))*(int(location)/10))
 
 
         return render(request, 'huis.html', {'lng':lng, 'lat':lat, 'adres':new, 'prediction':newPrice,'perceelRate':perceelRate,'huisRate':huisRate,'perceelOp':perceelOp, 'locationStar':locationStar, 'locationDes':locationDes, 'huisOp':huisOp})

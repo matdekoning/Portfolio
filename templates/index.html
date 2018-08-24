@@ -17,7 +17,7 @@
                     <img src="{% static "images/huisAfbeelding.jpg" %}" alt="My image" style="width:100%" />
                     <br />
                     <br />
-                    Enter an address to predict the house price:
+                    Enter a Dutch address to predict the house price:
                     <br /><br />
 
                     <form method="post" action="/huis/">
@@ -93,11 +93,11 @@
                 <div class="panel-body">
                     {% load staticfiles %}
                     <img src="{% static "images/imageRec.jpg" %}" alt="My image" style="width:100%" />
-                     <p></p><br /><br />
+                     <p></p><br />
                      <br />
-                    Upload an image to check our ecognition system:
+Upload an image (without whitespaces in the filename) to check the face detection algorithm:
                     <br /><br />
-                     <form method="post" action="/image/">
+                     <form method="post" action="/image/" enctype="multipart/form-data">
                             {% csrf_token %}
                         {% for ding in upload %}
                        <div class="form-group">

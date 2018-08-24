@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('twitter/', include('twitter.urls')),
     path('huis/', include('huis.urls')),
     path('contact/', include('contact.urls')),
+    path('image/', include('image.urls')),
 ]
 from django.views.generic import RedirectView
 urlpatterns += [
